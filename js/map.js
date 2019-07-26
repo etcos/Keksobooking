@@ -13,17 +13,42 @@ var getRandomInt = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
-var shuffle = function (arr) {
-  var j;
-  var temp;
-  for (var i = arr.length - 1; i > 0; i--) {
-    j = Math.floor(Math.random() * (i + 1));
-    temp = arr[j];
-    arr[j] = arr[i];
-    arr[i] = temp;
+function isMatched(value, array) {
+  for (var i = 0; i < array.length; i++) {
+    if (value === array[i]) {
+      return true;
+    }
   }
-  return arr;
+
+  return false;
+}
+
+var getRandomNumbers = function (min, max) {
+  var randomNumbers = [];
+  var randomNumber;
+  for (var i = 0; i < max; i++) {
+    randomNumber = getRandomInt(min, max);
+
+    if (isMatched(randomNumber, randomNumbers)) {
+      i--;
+    } else {
+      randomNumbers[i] = randomNumber;
+    }
+  }
+  return randomNumbers;
 };
+
+// var shuffle = function (arr) {
+//   var j;
+//   var temp;
+//   for (var i = arr.length - 1; i > 0; i--) {
+//     j = Math.floor(Math.random() * (i + 1));
+//     temp = arr[j];
+//     arr[j] = arr[i];
+//     arr[i] = temp;
+//   }
+//   return arr;
+// };
 
 var generateAds = function () {
 
@@ -49,7 +74,13 @@ var generateAds = function () {
         checkout: TIMES[getRandomInt(0, TYPES.length - 1)],
         features: FEATURES.slice(0, getRandomInt(1, FEATURES.length - 1)),
         description: '',
-        photos: shuffle(FEATURES),
+        setShufflePhotos: function () {
+          var arrIndex = getRandomNumbers(0, PHOTOS.length);
+          for (var k = 0; k < PHOTOS.length; k++) {
+            this.photos.push(PHOTOS[arrIndex[k]]);
+          }
+        },
+        photos: [],
         location: {
           x: getRandomInt(0, blockMap.offsetWidth),
           y: getRandomInt(130, 630)
@@ -58,6 +89,7 @@ var generateAds = function () {
     };
     ads[i].offer.setCountGuests();
     ads[i].offer.setCoordsAdress();
+    ads[i].offer.setShufflePhotos();
   }
 
 };
