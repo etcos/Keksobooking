@@ -13,7 +13,7 @@ var getRandomInt = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
-var shuffle = function (arr) {
+function shuffle (arr) {
   var j;
   var temp;
   for (var i = arr.length - 1; i > 0; i--) {
