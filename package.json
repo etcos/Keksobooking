@@ -1,0 +1,26 @@
+{
+  "name": "keksobooking",
+  "version": "0.0.1",
+  "description": "Личный проект JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint js/",
+    "start": "gulp start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pannat/Keksobooking.git"
+  },
+  "author": "pannat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pannat/Keksobooking/issues"
+  },
+  "homepage": "https://github.com/pannat/Keksobooking#readme",
+  "dependencies": {
+    "browser-sync": "^2.26.7",
+    "eslint": "^6.1.0",
+    "eslint-config-htmlacademy": "^0.5.2",
+    "gulp": "^4.0.2"
+  }
+}
