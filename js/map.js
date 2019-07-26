@@ -5,18 +5,17 @@ var TITLES = ['Большая уютная квартира', 'Маленька�
   'Красивый гостевой домик', 'Некрасивый негостеприимный домик', 'Уютное бунгало далеко от моря', 'Неуютное бунгало по колено в воде'];
 var TYPES = ['palace', 'flat', 'house', 'bungalo'];
 var TIMES = ['12:00', '13:00', '14:00'];
+var FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
 var blockMap = document.querySelector('.map');
 
 var getRandomInt = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
-
 var generateAds = function () {
 
   for (var i = 0; i < 8; i++) {
-    var FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
-    FEATURES.length = getRandomInt(1, FEATURES.length - 1);
+    
     ads[i] = {
       author: {
         avatar: 'img/avatars/user0' + i + 1 + '.png'
@@ -36,7 +35,7 @@ var generateAds = function () {
         },
         checkin: TIMES[getRandomInt(0, TYPES.length - 1)],
         checkout: TIMES[getRandomInt(0, TYPES.length - 1)],
-        features: FEATURES,
+        features: FEATURES.slice(0, getRandomInt(1, FEATURES.length - 1)),
         description: '',
         location: {
           x: getRandomInt(0, blockMap.offsetWidth),
