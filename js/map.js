@@ -49,7 +49,7 @@ var generateAds = function () {
         checkout: TIMES[getRandomInt(0, TYPES.length - 1)],
         features: FEATURES.slice(0, getRandomInt(1, FEATURES.length - 1)),
         description: '',
-        photos: shuffle(FEATURES),
+        photos: shuffle(PHOTOS.slice(0)),
         location: {
           x: getRandomInt(0, blockMap.offsetWidth),
           y: getRandomInt(130, 630)
