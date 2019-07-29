@@ -13,6 +13,7 @@ var getRandomInt = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
+
 function shuffle (arr) {
   var j;
   var temp;
@@ -22,8 +23,25 @@ function shuffle (arr) {
     arr[j] = arr[i];
     arr[i] = temp;
   }
-  return arr;
+
+  return false;
+}
+
+var getRandomNumbers = function (min, max) {
+  var randomNumbers = [];
+  var randomNumber;
+  for (var i = 0; i < max; i++) {
+    randomNumber = getRandomInt(min, max);
+
+    if (isMatched(randomNumber, randomNumbers)) {
+      i--;
+    } else {
+      randomNumbers[i] = randomNumber;
+    }
+  }
+  return randomNumbers;
 };
+
 
 var generateAds = function () {
 
@@ -58,6 +76,7 @@ var generateAds = function () {
     };
     ads[i].offer.setCountGuests();
     ads[i].offer.setCoordsAdress();
+    ads[i].offer.setShufflePhotos();
   }
 
 };
